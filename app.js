@@ -3,14 +3,17 @@ import { renderGoblin, renderPlayerHP } from './utils.js';
 
 const goblinsDiv = document.getElementById('goblinsDiv');
 const playerHP = document.getElementById('playerHP');
+const challengeGoblinForm = document.getElementById('challengeGoblin');
+const challengeGoblinBtn = document.getElementById('goblinButton');
 
 // let state
+
+let goblinIdCounter = 3;
+const goblinInitialHP = 3;
 
 const player = {
     hp: 0,
 };
-
-let goblinIdCounter = 3;
 
 let goblins = [
     {
@@ -31,6 +34,25 @@ function attackGoblin(goblin) {
     console.log(`hi my name is ${goblin.name} and my id is ${goblin.id}`);
 }
 
+// Challenge goblin event
+challengeGoblinBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const goblinData = new FormData(challengeGoblinForm);
+    const goblinName = goblinData.get('goblinName');
+    if (goblinName) {
+        const goblin = {
+            id: goblinIdCounter,
+            name: goblinName,
+            hp: goblinInitialHP,
+        };
+        challengeGoblinForm.reset();
+        goblinIdCounter++;
+        goblins.push(goblin);
+        displayGoblins();
+    }
+});
+
+
 // Display Functions
 function displayGoblins() {
     goblinsDiv.innerHTML = '';
@@ -49,13 +71,3 @@ function displayPlayerStats() {
 
 displayPlayerStats();
 displayGoblins();
-
-
-
-
-// set event listeners 
-
-
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state

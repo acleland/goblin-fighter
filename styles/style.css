@@ -73,6 +73,11 @@ main {
     font-size: 1.5rem;
 }
 
+.goblin:hover {
+    background-color: rgb(143, 150, 156);
+    cursor: pointer;
+}
+
 .goblin p {
     margin: 0;
     padding: 0;
