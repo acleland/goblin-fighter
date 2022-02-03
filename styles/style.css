@@ -7,28 +7,17 @@ body {
     --color3: white;
     --color4: white;
     --color5: white;
-    
-    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-        
-    /* --color1: hsla(349, 69%, 76%, 1);
-    --color2: hsla(207, 67%, 44%, 1);
-    --color3: hsla(200, 61%, 56%, 1);
-    --color4: hsla(187, 41%, 94%, 1);
-    --color5: hsla(170, 28%, 95%, 1); */
 
-    /* --color1: hsla(45, 86%, 83%, 1);
-    --color2: hsla(135, 65%, 98%, 1);
-    --color3: hsla(315, 37%, 86%, 1);
-    --color4: hsla(45, 73%, 98%, 1);
-    --color5: hsla(224, 40%, 79%, 1); */
-    
     --header-height: 80px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
     --goblin-font: 1.2rem;
+    --soft-corner: 0.3rem;
+    --round-corner: 1rem;
     
     font-family: 'Titillium Web', sans-serif;
+    /* font-family: 'Press Start 2P', cursive; */
     background-color: var(--color2);
 }
 header {
@@ -43,22 +32,6 @@ main {
     margin-bottom: calc(var(--footer-height));
 }
 
-/* section {
-    background-color: var(--color5);
-    max-width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
-} */
-
-
-
 .player img {
     width: 250px;
 }
@@ -71,18 +44,22 @@ main {
 .challengeForm input {
     padding: .5rem;
     padding-left: 2rem;
-    border-radius: 2rem .5rem .5rem 2rem;
+    border-radius: var(--round-corner) var(--soft-corner) var(--soft-corner) var(--round-corner);
     margin: 0;
     font-size: var(--goblin-font);
-    background-color: lightcoral;
+    background-color: rgb(243, 182, 182);
     color: white;
 }
 
 .challengeForm button {
     margin: 0;
     background-color: lightblue;
-    border-radius: .5rem;
+    border-radius: var(--soft-corner) var(--round-corner) var(--round-corner) var(--soft-corner);
     font-size: var(--goblin-font);
+}
+
+.challengeForm button:hover {
+    background-color: rgb(20, 139, 212);
 }
 
 .goblin {

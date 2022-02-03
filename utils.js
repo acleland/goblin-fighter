@@ -1,11 +1,11 @@
-function getP(text) {
+export function getP(text) {
     const p = document.createElement('p');
     p.textContent = text;
     return p;
 }
 
 
-function renderGoblin(goblin) {
+export function renderGoblin(goblin) {
     const div = document.createElement('div');
     div.classList.add('goblin');
     div.append(getP(goblin.name));
@@ -14,11 +14,7 @@ function renderGoblin(goblin) {
     return div;
 }
 
-function renderPlayerHP(player) {
+export function renderPlayerHP(player) {
     return `Your HP ${player.hp}`;
 }
 
-
-export {
-    getP, renderGoblin, renderPlayerHP
-};

@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { getP, renderGoblin, renderPlayerHP } from "../utils.js";
+import { getP, renderGoblin, renderPlayerHP } from '../utils.js';
 
 const test = QUnit.test;
 
@@ -37,7 +37,7 @@ test('test renderGoblin alive', (expect) => {
 test('test renderGoblin dead', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = `<div class="goblin"><p>Gorlog</p><p>💀</p><p>0</p></div>`
+    const expected = `<div class="goblin"><p>Gorlog</p><p>💀</p><p>0</p></div>`;
     //Act
     // Call the function you're testing and set the result to a const
     const actual = renderGoblin({

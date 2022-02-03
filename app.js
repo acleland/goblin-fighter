@@ -1,12 +1,13 @@
 // import functions and grab DOM elements
-import { renderGoblin, renderPlayerHP } from "./utils.js";
+import { renderGoblin, renderPlayerHP } from './utils.js';
 
 const goblinsDiv = document.getElementById('goblinsDiv');
+const playerHP = document.getElementById('playerHP');
 
 // let state
 
 const player = {
-    hp: 10,
+    hp: 0,
 };
 
 let goblins = [
@@ -20,6 +21,8 @@ let goblins = [
     }
 ];
 
+
+// Display Functions
 function displayGoblins() {
     goblinsDiv.innerHTML = '';
     for (let goblin of goblins) {
@@ -27,7 +30,14 @@ function displayGoblins() {
     }
 }
 
+function displayPlayerStats() {
+    playerHP.textContent = renderPlayerHP(player);
+}
+
+displayPlayerStats();
 displayGoblins();
+
+
 
 
 // set event listeners 
