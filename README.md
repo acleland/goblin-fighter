@@ -60,3 +60,4 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
   - Div showing the adventurer 
   - Maybe add name and other stuff later
 }
+  

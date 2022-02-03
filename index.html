@@ -13,8 +13,34 @@
 </head>
 
 <body>
-    <main>
+    <header>
         <h1>GOBLIN FIGHTER</h1>
+    </header>
+    
+    <main>
+        <section id="playerSection">
+            <div id="score">You have defeated 0 goblins</div>
+            <div id="playerHP">Your HP 10</div>
+            <div id="playerSprite" class="player"><img src="./assets/adventurer.png" alt=""></div>
+        </section>
+        <section id="goblinSection">
+            <form id="challengeGoblin" action="">
+                <input id="goblinInput" name="goblinName" type="text" placeholder="Enter Goblin Name">
+                <button>Challenge Goblin</button>
+            </form>
+            <div id="goblinsDiv">
+                <div class="goblin">
+                    <p>Gorlog</p>
+                    <p class="goblinEmoji">😈</p>
+                    <p class="goblinHP">4</p>
+                </div>
+                <div class="goblin">
+                    <p>Herglug</p>
+                    <p>😈</p>
+                    <p>4</p>
+                </div>
+            </div>
+        </section>     
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2022 Andrea Cleland</div>
