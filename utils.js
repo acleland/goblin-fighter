@@ -14,7 +14,11 @@ function renderGoblin(goblin) {
     return div;
 }
 
+function renderPlayerHP(player) {
+    return `Your HP ${player.hp}`;
+}
+
 
 export {
-    getP, renderGoblin
+    getP, renderGoblin, renderPlayerHP
 };

@@ -1,6 +1,34 @@
 // import functions and grab DOM elements
+import { renderGoblin, renderPlayerHP } from "./utils.js";
+
+const goblinsDiv = document.getElementById('goblinsDiv');
 
 // let state
+
+const player = {
+    hp: 10,
+};
+
+let goblins = [
+    {
+        name: 'Gorlug',
+        hp: 4,
+    },
+    {
+        name: 'Herclug',
+        hp: 2,
+    }
+];
+
+function displayGoblins() {
+    goblinsDiv.innerHTML = '';
+    for (let goblin of goblins) {
+        goblinsDiv.append(renderGoblin(goblin));
+    }
+}
+
+displayGoblins();
+
 
 // set event listeners 
   // get user input

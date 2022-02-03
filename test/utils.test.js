@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { getP, renderGoblin } from "../utils.js";
+import { getP, renderGoblin, renderPlayerHP } from "../utils.js";
 
 const test = QUnit.test;
 
@@ -48,4 +48,11 @@ test('test renderGoblin dead', (expect) => {
     //Expect
     // Make assertions about what is expected versus the actual result
     expect.equal(actual.outerHTML, expected);
+});
+
+test('test renderPlayerHP', (expect) => {
+    const expected = 'Your HP 10';
+    const actual = renderPlayerHP({ hp: 10 });
+
+    expect.equal(actual, expected);
 });
