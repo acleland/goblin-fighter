@@ -60,6 +60,7 @@ main {
 
 .challengeForm button:hover {
     background-color: rgb(20, 139, 212);
+    cursor: pointer;
 }
 
 .goblin {
@@ -75,7 +76,8 @@ main {
 
 .goblin:hover {
     background-color: rgb(143, 150, 156);
-    cursor: pointer;
+    /* cursor: pointer; */
+    cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), default !important;
 }
 
 .goblin p {

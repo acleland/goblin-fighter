@@ -6,32 +6,62 @@ const playerHP = document.getElementById('playerHP');
 const challengeGoblinForm = document.getElementById('challengeGoblin');
 const challengeGoblinBtn = document.getElementById('goblinButton');
 
-// let state
+// Game constants and initial players
 
-let goblinIdCounter = 3;
+let goblinIdCounter = 2;
 const goblinInitialHP = 3;
+const goblinArmor = 2;
 
 const player = {
-    hp: 0,
+    name: 'Adventurer',
+    hp: 5,
+    armor: 5
 };
 
+// Goblin generator
+function makeGoblin(name, hp = goblinInitialHP, armor = goblinArmor){
+    goblinIdCounter++;
+    return {
+        id: goblinIdCounter,
+        name: name,
+        hp: hp,
+        armor: armor
+    };
+}
+
 let goblins = [
-    {
-        id: 0,
-        name: 'Gorlug',
-        hp: 4,
-    },
-    {
-        id: 1,
-        name: 'Herclug',
-        hp: 2,
-    }
+    makeGoblin('Gorlug'),
+    makeGoblin('Herclug')
 ];
 
 
+
 // Attack Goblin logic
+
+function d20() {
+    return Math.ceil(Math.random() * 20);
+}
+
+function attack(attacker, defender) {
+    const roll = d20();
+    if (roll > defender.armor) {
+        defender.hp -= 1;
+        if (defender.hp < 0) {
+            defender.hp = 0;
+        }
+        return `${attacker.name} successfully hit ${defender.name}`;
+    } else {
+        return `${attacker.name} tried to hit ${defender.name} but missed!`;
+    }
+}
+
 function attackGoblin(goblin) {
-    console.log(`hi my name is ${goblin.name} and my id is ${goblin.id}`);
+    const playerAttackMessage = attack(player, goblin);
+    alert(playerAttackMessage);
+    const goblinAttackMessage = attack(goblin, player);
+    alert(goblinAttackMessage);
+    displayPlayerStats();
+    displayGoblins();
 }
 
 // Challenge goblin event
@@ -40,13 +70,8 @@ challengeGoblinBtn.addEventListener('click', (e) => {
     const goblinData = new FormData(challengeGoblinForm);
     const goblinName = goblinData.get('goblinName');
     if (goblinName) {
-        const goblin = {
-            id: goblinIdCounter,
-            name: goblinName,
-            hp: goblinInitialHP,
-        };
+        const goblin = makeGoblin(goblinName);
         challengeGoblinForm.reset();
-        goblinIdCounter++;
         goblins.push(goblin);
         displayGoblins();
     }
