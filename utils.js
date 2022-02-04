@@ -15,6 +15,9 @@ export function renderGoblin(goblin) {
 }
 
 export function renderPlayerHP(player) {
-    return `Your HP ${player.hp}`;
+    return `Your HP: ${player.hp}`;
 }
 
+export function renderScore(score) {
+    return `Goblins defeated: ${score}`;
+}

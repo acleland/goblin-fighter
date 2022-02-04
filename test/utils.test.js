@@ -51,7 +51,7 @@ test('test renderGoblin dead', (expect) => {
 });
 
 test('test renderPlayerHP', (expect) => {
-    const expected = 'Your HP 10';
+    const expected = 'Your HP: 10';
     const actual = renderPlayerHP({ hp: 10 });
 
     expect.equal(actual, expected);

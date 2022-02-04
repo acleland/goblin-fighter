@@ -1,22 +1,41 @@
 // import functions and grab DOM elements
-import { renderGoblin, renderPlayerHP } from './utils.js';
+import { renderGoblin, renderPlayerHP, renderScore } from './utils.js';
 
 const goblinsDiv = document.getElementById('goblinsDiv');
 const playerHP = document.getElementById('playerHP');
 const challengeGoblinForm = document.getElementById('challengeGoblin');
 const challengeGoblinBtn = document.getElementById('goblinButton');
+const scoreDiv = document.getElementById('score');
+const playerSprite = document.getElementById('playerSprite');
+
 
 // Game constants and initial players
 
-let goblinIdCounter = 2;
+let goblinIdCounter = 0;
 const goblinInitialHP = 3;
 const goblinArmor = 2;
+const playerArmor = 0;
+let killedGoblins = 0;
 
-const player = {
-    name: 'Adventurer',
-    hp: 5,
-    armor: 5
-};
+let player;
+let goblins;
+
+// Init game function
+function initGame() {
+    goblinIdCounter = 2;
+    killedGoblins = 0;
+
+    player = {
+        name: 'Adventurer',
+        hp: 1,
+        armor: playerArmor
+    };
+
+    goblins = [
+        makeGoblin('Gorlug'),
+        makeGoblin('Herclug')
+    ];
+}
 
 // Goblin generator
 function makeGoblin(name, hp = goblinInitialHP, armor = goblinArmor){
@@ -28,13 +47,6 @@ function makeGoblin(name, hp = goblinInitialHP, armor = goblinArmor){
         armor: armor
     };
 }
-
-let goblins = [
-    makeGoblin('Gorlug'),
-    makeGoblin('Herclug')
-];
-
-
 
 // Attack Goblin logic
 
@@ -57,16 +69,24 @@ function attack(attacker, defender) {
 
 function attackGoblin(goblin) {
     const playerAttackMessage = attack(player, goblin);
-    alert(playerAttackMessage);
+    myAlert(playerAttackMessage);
     const goblinAttackMessage = attack(goblin, player);
-    alert(goblinAttackMessage);
-    displayPlayerStats();
-    displayGoblins();
+    myAlert(goblinAttackMessage);
+    if (goblin.hp === 0) {
+        killedGoblins++;
+    }
+    
+    displayAll();
+    if (player.hp === 0) {
+        gameOver();
+    }
 }
 
-// Challenge goblin event
-challengeGoblinBtn.addEventListener('click', (e) => {
+function onChallenge(e) {
     e.preventDefault();
+    if (player.hp <= 0) {
+        return;
+    }
     const goblinData = new FormData(challengeGoblinForm);
     const goblinName = goblinData.get('goblinName');
     if (goblinName) {
@@ -75,7 +95,10 @@ challengeGoblinBtn.addEventListener('click', (e) => {
         goblins.push(goblin);
         displayGoblins();
     }
-});
+}
+
+// Challenge goblin event
+challengeGoblinBtn.addEventListener('click', onChallenge);
 
 
 // Display Functions
@@ -83,16 +106,40 @@ function displayGoblins() {
     goblinsDiv.innerHTML = '';
     for (let goblin of goblins) {
         const goblinDiv = renderGoblin(goblin);
-        goblinDiv.addEventListener('click', () => {
-            attackGoblin(goblin);
-        });
+        // Only add an event listener if the goblin and player is alive
+        if ((goblin.hp > 0) && (player.hp > 0)) {
+            goblinDiv.addEventListener('click', () => {
+                attackGoblin(goblin);
+            });
+        }
         goblinsDiv.append(goblinDiv);
     }
 }
 
-function displayPlayerStats() {
+function displayPlayerHP() {
     playerHP.textContent = renderPlayerHP(player);
 }
 
-displayPlayerStats();
-displayGoblins();
+function displayKillCount() {
+    scoreDiv.textContent = renderScore(killedGoblins);
+}
+
+function displayAll() {
+    displayKillCount();
+    displayPlayerHP();
+    displayGoblins();
+}
+
+function myAlert(message) {
+    alert(message);
+}
+
+function gameOver() {
+    playerSprite.classList.add('dead');
+    document.getElementById('goblinInput').readOnly = true;
+    myAlert('GAME OVER!!!');
+}
+
+initGame();
+displayAll();
+

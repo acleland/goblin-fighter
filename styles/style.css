@@ -28,12 +28,25 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: calc(var(--footer-height));
+    background-image: url('../assets/forest.jpg');
+
 }
 
 .player img {
     width: 250px;
+}
+
+.player.dead {
+    transform: rotate(90deg);
+}
+
+#goblinSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
 }
 
 .challengeForm {
@@ -47,8 +60,8 @@ main {
     border-radius: var(--round-corner) var(--soft-corner) var(--soft-corner) var(--round-corner);
     margin: 0;
     font-size: var(--goblin-font);
-    background-color: rgb(243, 182, 182);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .challengeForm button {
@@ -72,6 +85,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     font-size: 1.5rem;
+    background-color: #A89F68;
 }
 
 .goblin:hover {
@@ -83,6 +97,34 @@ main {
 .goblin p {
     margin: 0;
     padding: 0;
+}
+
+#score {
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    background-color: #235e02;
+    color: #ffffff;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#playerHP {
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem;
+    background-color: #BE191B;
+    color: #660000;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h2 {
