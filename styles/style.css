@@ -49,6 +49,27 @@ main {
     height: 100%;
 }
 
+#tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#reset {
+    margin: 0;
+    background-color: #BE191B;
+    /* border-radius: var(--soft-corner) var(--round-corner) var(--round-corner) var(--soft-corner); */
+    border-radius: var(--round-corner);
+    font-size: var(--goblin-font);
+    color: white;
+}
+
+#reset:hover {
+    background-color: #961013;
+    background-color: ;
+    cursor: pointer;
+}
+
 .challengeForm {
     display: flex;
     font-family: 'Titillium Web', sans-serif;

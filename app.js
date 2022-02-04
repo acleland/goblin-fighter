@@ -7,14 +7,16 @@ const challengeGoblinForm = document.getElementById('challengeGoblin');
 const challengeGoblinBtn = document.getElementById('goblinButton');
 const scoreDiv = document.getElementById('score');
 const playerSprite = document.getElementById('playerSprite');
+const resetBtn = document.getElementById('reset');
 
 
 // Game constants and initial players
 
 let goblinIdCounter = 0;
 const goblinInitialHP = 3;
-const goblinArmor = 2;
-const playerArmor = 0;
+const playerInitialHP = 10;
+const goblinArmor = 5;
+const playerArmor = 10;
 let killedGoblins = 0;
 
 let player;
@@ -27,7 +29,7 @@ function initGame() {
 
     player = {
         name: 'Adventurer',
-        hp: 1,
+        hp: playerInitialHP,
         armor: playerArmor
     };
 
@@ -99,6 +101,13 @@ function onChallenge(e) {
 
 // Challenge goblin event
 challengeGoblinBtn.addEventListener('click', onChallenge);
+
+// Reset game event
+resetBtn.addEventListener('click', () => {
+    initGame();
+    displayAll();
+    playerSprite.classList.remove('dead');
+});
 
 
 // Display Functions
