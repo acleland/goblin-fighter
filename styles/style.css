@@ -7,60 +7,156 @@ body {
     --color3: white;
     --color4: white;
     --color5: white;
-    
-    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-        
-    /* --color1: hsla(349, 69%, 76%, 1);
-    --color2: hsla(207, 67%, 44%, 1);
-    --color3: hsla(200, 61%, 56%, 1);
-    --color4: hsla(187, 41%, 94%, 1);
-    --color5: hsla(170, 28%, 95%, 1); */
 
-    /* --color1: hsla(45, 86%, 83%, 1);
-    --color2: hsla(135, 65%, 98%, 1);
-    --color3: hsla(315, 37%, 86%, 1);
-    --color4: hsla(45, 73%, 98%, 1);
-    --color5: hsla(224, 40%, 79%, 1); */
-    
-    --header-height: 80px;
+    --header-height: 0px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
+    --goblin-font: 1.2rem;
+    --soft-corner: 0.3rem;
+    --round-corner: 1rem;
     
     font-family: 'Titillium Web', sans-serif;
+    /* font-family: 'Press Start 2P', cursive; */
     background-color: var(--color2);
+}
+header {
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    margin: 0;
 }
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: calc(var(--footer-height));
+    background-image: url('../assets/forest.jpg');
+
 }
 
-section {
-    background-color: var(--color5);
-    max-width: 80%;
+#playerSection {
+    margin-top: 2rem;
+}
+
+.player img {
+    width: 250px;
+}
+
+.player.dead {
+    transform: rotate(90deg);
+}
+
+#goblinSection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
+    justify-content: flex-start;
+    height: 90%;
+    margin-top: 2rem;
 }
 
-header {
+#tools {
     display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    height: var(--header-height);
-    box-shadow: var(--shadow);
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5rem;
 }
 
+#reset {
+    margin: 0;
+    background-color: #BE191B;
+    /* border-radius: var(--soft-corner) var(--round-corner) var(--round-corner) var(--soft-corner); */
+    border-radius: var(--round-corner);
+    font-size: var(--goblin-font);
+    color: white;
+}
+
+#reset:hover {
+    background-color: #961013;
+    cursor: pointer;
+}
+
+.challengeForm {
+    display: flex;
+    font-family: 'Titillium Web', sans-serif;
+    
+}
+.challengeForm input {
+    padding: .5rem;
+    padding-left: 2rem;
+    border-radius: var(--round-corner) var(--soft-corner) var(--soft-corner) var(--round-corner);
+    margin: 0;
+    font-size: var(--goblin-font);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.challengeForm button {
+    margin: 0;
+    background-color: lightblue;
+    border-radius: var(--soft-corner) var(--round-corner) var(--round-corner) var(--soft-corner);
+    font-size: var(--goblin-font);
+}
+
+.challengeForm button:hover {
+    background-color: rgb(20, 139, 212);
+    cursor: pointer;
+}
+
+.goblin {
+    padding: 1em;
+    border: 3px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+    margin-left: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    background-color: #A89F68;
+}
+
+.goblin:hover {
+    background-color: rgb(143, 150, 156);
+    /* cursor: pointer; */
+    cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), default !important;
+}
+
+.goblin p {
+    margin: 0;
+    padding: 0;
+}
+
+#score {
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: 0rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    background-color: #235e02;
+    color: #ffffff;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#playerHP {
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem;
+    background-color: #BE191B;
+    color: #660000;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 h2 {
     font-size: 1.8rem;
@@ -71,13 +167,7 @@ h2 {
     margin-right: 20px;
 }
 
-header img {
-    height: var(--header-height);
-}
 
-p {
-    margin: var(--gutter);
-}
   
 footer {
     position: fixed;

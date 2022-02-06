@@ -4,22 +4,73 @@
 
 If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
 
+## Requirements: 
+
+- On load, see the HP and names of at least two default goblins
+- On submitting the 'challenge goblin' form, add a new goblin object (with 3 HP and a name) to state and display it to the DOM
+  - get goblinsDiv element from the Dom
+  - define a new goblin object
+  - append the new gobling to the goblins array
+  - append
+  - dynamically add even listener to the goblin's button;
+  - run displayGoblins()
+- On clicking a goblin, it should tell the user whether they hit the goblin or not, then update state and DOM appropriately with new HP
+- On clicking a goblin, it should tell the user whether the goblin hit the player or not, then update state and DOM appropriately with new HP
+- The number of vanquished goblins should be visible when state changes.
+- Render dead goblins differently, and disable clicking on them
+- When the user's HP is 0, launch a game over message
+
 ## Making a plan
 
-1) **Make a drawing of your app. Simple "wireframes"**
-1) **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1) **For each HTML element ask: Why do I need this? (i.e., "we need div to display the results in")** 
-1) **Once we know _why_ we need each element, think about how to implement the "Why" as a "How" (i.e., `resultsEl.textContent = newResults`)**
-1) **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1) **Think about how to validate each of your features according to a Definition of Done. (Hint: console.log usually helps here.)**
-1) **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+- HTML Elements needed:
+  - challenge goblin form
+  - "you have defeated x goblins" div
+  - Your HP Div
+  - Divs or buttons for each goblin. Initially 2 goblins
+  - Player image div
 
-Additional considerations:
-- Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
-- Consider your data model. 
-  - What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need? 
-  - What are the key/value pairs? 
-  - What arrays might you need? 
-  - What needs to live in a persistence layer?
-- Is there some state we need to initialize?
-- Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
+- State info to keep track of
+  - HP for each goblin
+  - Player HP
+
+- Events
+  - Challenge Goblin event
+    - create a new goblin object
+    - Give it an ID
+    - initialize its HP to 3
+    - Set its name to player's input
+    - Create a new display div
+    - Add an event listener to the div
+    - Run displayGoblins()
+        - for each goblin, create new div
+        - add new event listener? 
+    
+  - Attack goblin event
+    - attackGoblin(goblin )
+    - Generate a random number, if the number > threshold, attacker scores a hit. Do this for both player and goblin
+    - if a hit occurs, deduct 1 HP
+    - notify player with an alert of outcome of each attack
+    - if HP goes to zero, trigger death event
+
+  - Goblin defeated event
+    - Show that it is dead in some way (example used emojis)
+    - remove the event listener for the dead goblin so that it is no longer clickable
+
+  - Player defeated event
+    - Alert the player that the game is over
+    - Turn player div to side (activate dead class or something)
+
+- Goblin = {
+  - name
+  - HP
+  - Div object
+    - Displays, name emoji, and HP
+  - eventListener for Div object unless player is dead
+}
+
+- Player = {
+  - HP
+  - Div showing the adventurer 
+  - Maybe add name and other stuff later
+}
+  
